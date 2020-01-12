@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#Introduction
+echo -e "Hi Jay. 
+\n--- 
+\n This script will install and configure the following.... 
+\n--- 
+\n\tZSH 
+\n\t\t- New Shell because that's the future, apparently. 
+\n\tOh-My-ZSH
+\n\t\t- Package manager for ZSH
+\n\tHyper Terminal 
+\n\t\t- A super awesome terminal application 
+\n\tPowerline fonts 
+\n\t\t- Because apparently this is super important for a good looking functional terminal 
+\n\tVisual Studio Code 
+\n\t\t- A super awesome IDE"
+
+
+mkdir ~\.temp
+cd ~\.temp
+#check if hyper is installed
+####
+#If it's not installed, download and install
+wget -O  hyper.deb https://releases.hyper.is/download/deb
+apt-get install -y ./hyper.deb
