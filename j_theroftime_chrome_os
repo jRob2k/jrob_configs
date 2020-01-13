@@ -24,3 +24,21 @@ cd ~\.temp
 #If it's not installed, download and install
 wget -O  hyper.deb https://releases.hyper.is/download/deb
 apt-get install -y ./hyper.deb
+
+##### Used to install oh-my-zsh. probably should copy this template
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+#### Install spaceship prompt
+#Clone the repo
+git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+
+#Symlink spaceship.zsh-theme to the oh-my-zsh custom themes director
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+
+#copy my .zshrc file or add spaceship to the .zshrc file
+
+###install zsh-syntax-highlighting
+
+#Clone the repo
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
