@@ -28,6 +28,21 @@ apt-get install -y ./hyper.deb
 ##### Used to install oh-my-zsh. probably should copy this template
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+
+##### Switch default shell to zsh
+sudo chsh -s /usr/bin/zsh <username>
+
+#Install Powerline Fonts
+# clone
+git clone https://github.com/powerline/fonts.git --depth=1
+# install
+cd fonts
+./install.sh
+# clean-up a bit
+cd ..
+rm -rf fonts
+
+
 #### Install spaceship prompt
 #Clone the repo
 git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
@@ -39,6 +54,5 @@ ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/the
 
 ###install zsh-syntax-highlighting
 
-#Clone the repo
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+sudo apt-get install zsh-syntax-highlighting
+
