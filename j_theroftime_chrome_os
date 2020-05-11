@@ -67,7 +67,7 @@ cp ~/dotfiles/Customization-Scripts/.zshrc ~/.zshrc
 echo -e "----
 /nInstalling tmux"
 sudo apt-get install tmux -y
-
+sudo apt-get install xsel
 
 echo -e "----
 /nInstalling emacs and spacemacs"
@@ -75,6 +75,3 @@ sudo apt-get install emacs -y
 
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
-#creating aliases
-alias emacs="emacs -nw"
-alias spacemacs="emacs -nw"
