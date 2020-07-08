@@ -1,24 +1,24 @@
 #!/bin/zsh
 
 #Introduction
-echo -e "Sup, Jay! 
-\n--- 
-\n This script will install and configure the following.... 
-\n--- 
-\n\tZSH 
-\n\t\t- New Shell because that's the future, apparently. 
+echo -e "Sup, Jay!
+\n---
+\n This script will install and configure the following....
+\n---
+\n\tZSH
+\n\t\t- New Shell because that's the future, apparently.
 \n\tOh-My-ZSH
 \n\t\t- Package manager for ZSH
-\n\ttmux 
-\n\t\t- An awesome terminal window manager 
-\n\tPowerline fonts 
-\n\t\t- Because apparently this is super important for a good looking functional terminal 
-\n\temacs 
+\n\ttmux
+\n\t\t- An awesome terminal window manager
+\n\tPowerline fonts
+\n\t\t- Because apparently this is super important for a good looking functional terminal
+\n\temacs
 \n\t\t- A super awesome terminal text editor
 \n\tSpaceMacs
 \n\t\t- An extension for emacs to add VIM mode and IDE features
 \n\temacs aliases
-\n\t\t- Creates spacemaces alias and adds 'nw' to emacs alias." 
+\n\t\t- Creates spacemaces alias and adds 'nw' to emacs alias."
 
 #Prep
 mkdir ~\.temp
@@ -28,8 +28,9 @@ cd ~\.temp
 echo -e "----
 \nInstalling GIT, ZSH and zsh-syntax-highlighting and switching to it as default"
 
-#Installing GIT
-sudo apt-get install git -y
+#Installing ZSH
+sudo apt-get update
+sudo apt-get install zsh -y
 
 #Used to install oh-my-zsh. probably should copy this template
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
