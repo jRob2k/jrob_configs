@@ -1,0 +1,80 @@
+#!/bin/zsh
+
+#Introduction
+echo -e "Sup, Jay!
+\n---
+\n This script will install and configure the following....
+\n---
+\n\tZSH
+\n\t\t- New Shell because that's the future, apparently.
+\n\tOh-My-ZSH
+\n\t\t- Package manager for ZSH
+\n\ttmux
+\n\t\t- An awesome terminal window manager
+\n\tPowerline fonts
+\n\t\t- Because apparently this is super important for a good looking functional terminal
+\n\temacs
+\n\t\t- A super awesome terminal text editor
+\n\tSpaceMacs
+\n\t\t- An extension for emacs to add VIM mode and IDE features
+\n\temacs aliases
+\n\t\t- Creates spacemaces alias and adds 'nw' to emacs alias."
+
+#Prep
+mkdir ~\.temp
+cd ~\.temp
+
+#Installing stuff
+echo -e "----
+\nInstalling Homebrew, GIT, ZSH and zsh-syntax-highlighting and switching to it as default"
+
+#Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+
+#Used to install oh-my-zsh. probably should copy this template
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+###install zsh-syntax-highlighting
+brew install zsh-syntax-highlighting
+
+# Switch default shell to zsh
+sudo chsh -s /usr/bin/zsh <username>
+
+echo -e "----
+/nInstalling Powerline Fonts"
+
+#Install Powerline Fonts
+git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts
+./install.sh
+# clean-up a bit
+cd ..
+rm -rf fonts
+
+echo -e "----
+/nInstalling spaceship prompt"
+
+#### Install spaceship prompt
+#Clone the repo
+git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+
+#Symlink spaceship.zsh-theme to the oh-my-zsh custom themes director
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+
+#copy my .zshrc file or add spaceship to the .zshrc file
+cp ~/dotfiles/Customization-Scripts/.zshrc ~/.zshrc
+
+echo -e "----
+/nInstalling tmux"
+brew install tmux
+
+tmux set -s escape-time 0
+
+tmux set -g mouse on
+
+echo -e "----
+/nInstalling emacs and spacemacs"
+brew install emacs
+
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
