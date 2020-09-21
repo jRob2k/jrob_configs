@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 #Introduction
 echo -e "Sup, Jay!
@@ -20,10 +20,16 @@ echo -e "Sup, Jay!
 \n\temacs aliases
 \n\t\t- Creates spacemaces alias and adds 'nw' to emacs alias."
 
-#Prep
-mkdir ~\.temp
+#Create a temp folder to work in
+#Change to home directory
+cd ~
+#Create temp folder
+mkdir .temp
+#Change to temp folder
 cd ~\.temp
 
+<<Comment
+#Commenting out zsh installation and oh-my-zsh installation because the last step to change the shell fails on Chrome os due to a root password being needed.
 #Installing stuff
 echo -e "----
 \nInstalling GIT, ZSH and zsh-syntax-highlighting and switching to it as default"
@@ -33,13 +39,12 @@ sudo apt-get update
 sudo apt-get install zsh -y
 
 #Used to install oh-my-zsh. probably should copy this template
+#The last step to change the shell fails in Chrome os and exits the script. Figure out what's up. 
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+Comment
 
 ###install zsh-syntax-highlighting
 sudo apt-get install zsh-syntax-highlighting -y
-
-# Switch default shell to zsh
-sudo chsh -s /usr/bin/zsh <username>
 
 echo -e "----
 /nInstalling Powerline Fonts"
