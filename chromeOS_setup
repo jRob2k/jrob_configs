@@ -22,6 +22,7 @@ echo -e "Sup, Jay!
 
 #TODO - Get the script to stop here and add a confirmation prompt
 #TODO - At some point, make it modular so i can add/drop stuff as needed
+#TODO - Add some kind of reporting at the end so that i can see everything installed properly
 
 #Let's get to work installing stuff
 echo -e "----
@@ -47,15 +48,16 @@ cd fonts
 ./install.sh
 cd ~/
 
-echo -e "----
-/nInstalling spaceship prompt"
+###Commenting out spaceship prompt for now. agnoster theme FTW!!!
+# echo -e "----
+# /nInstalling spaceship prompt"
 
 #### Install spaceship prompt
 #Clone the repo
-git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+# git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
 
 #Symlink spaceship.zsh-theme to the oh-my-zsh custom themes director
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+# ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 
 #copy the appropriate zshrc file to home directory for use
 cp ~/dotfiles/Customization-Scripts/zshrc.chromeOS ~/.zshrc
@@ -63,7 +65,8 @@ cp ~/dotfiles/Customization-Scripts/zshrc.chromeOS ~/.zshrc
 echo -e "----
 /nInstalling tmux"
 sudo apt-get install tmux -y
-sudo apt-get install xsel
+###Commenting out xsel. not sure i need it and it may be interferring with copy paste. Test further
+# sudo apt-get install xsel
 
 cp ~/dotfiles/Customization-Scripts/tmux.conf.chromeOS ~/.tmux.conf
 
