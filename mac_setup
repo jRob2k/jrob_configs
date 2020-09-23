@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 #Introduction
 echo -e "Sup, Jay!
@@ -20,61 +20,48 @@ echo -e "Sup, Jay!
 \n\temacs aliases
 \n\t\t- Creates spacemaces alias and adds 'nw' to emacs alias."
 
-#Prep
-mkdir ~\.temp
-cd ~\.temp
+#TODO - Get the script to stop here and add a confirmation prompt
+#TODO - At some point, make it modular so i can add/drop stuff as needed
+#TODO - Add some kind of reporting at the end so that i can see everything installed properly
 
-#Installing stuff
+#Let's get to work installing stuff
 echo -e "----
-\nInstalling Homebrew, GIT, ZSH and zsh-syntax-highlighting and switching to it as default"
+\nInstalling Homebrew, ZSH and zsh-syntax-highlighting and switching to it as default"
 
 #Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 
 #Used to install oh-my-zsh. probably should copy this template
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 ###install zsh-syntax-highlighting
 brew install zsh-syntax-highlighting
-
-# Switch default shell to zsh
-sudo chsh -s /usr/bin/zsh <username>
 
 echo -e "----
 /nInstalling Powerline Fonts"
 
 #Install Powerline Fonts
+cd /tmp
 git clone https://github.com/powerline/fonts.git --depth=1
 cd fonts
 ./install.sh
-# clean-up a bit
-cd ..
-rm -rf fonts
+cd ~/
 
-echo -e "----
-/nInstalling spaceship prompt"
-
-#### Install spaceship prompt
-#Clone the repo
-git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
-
-#Symlink spaceship.zsh-theme to the oh-my-zsh custom themes director
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-
-#copy my .zshrc file or add spaceship to the .zshrc file
-cp ~/dotfiles/Customization-Scripts/.zshrc ~/.zshrc
+#copy the appropriate zshrc file to home directory for use
+cp ~/dotfiles/Customization-Scripts/zshrc.macOS ~/.zshrc
 
 echo -e "----
 /nInstalling tmux"
 brew install tmux
-
-tmux set -s escape-time 0
-
-tmux set -g mouse on
 
 echo -e "----
 /nInstalling emacs and spacemacs"
 brew install emacs
 
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
+cp ~/dotfiles/Customization-Scripts/tmux.conf.chromeOS ~/.tmux.conf
+
+echo -e "----
+/nTime to kill the terminal and open again... or reboot or something."
