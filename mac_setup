@@ -64,4 +64,10 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 cp ~/dotfiles/Customization-Scripts/tmux.conf.chromeOS ~/.tmux.conf
 
 echo -e "----
+/nAdding the Gotham theme....because I AM THE NIGHT!
+
+open ~/dotfiles/Customization-Scripts/Gotham.terminal
+defaults write com.apple.terminal "Default Window Settings" "Gotham.terminal"
+
+echo -e "----
 /nTime to kill the terminal and open again... or reboot or something."
