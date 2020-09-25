@@ -26,7 +26,7 @@ echo -e "Sup, Jay!
 
 #Let's get to work installing stuff
 echo -e "----
-\nInstalling Homebrew, ZSH and zsh-syntax-highlighting and switching to it as default"
+Installing Homebrew, ZSH and zsh-syntax-highlighting and switching to it as default"
 
 #Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -39,7 +39,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 brew install zsh-syntax-highlighting
 
 echo -e "----
-/nInstalling Powerline Fonts"
+Installing Powerline Fonts"
 
 #Install Powerline Fonts
 cd /tmp
@@ -51,12 +51,15 @@ cd ~/
 #copy the appropriate zshrc file to home directory for use
 cp ~/dotfiles/Customization-Scripts/zshrc.macOS ~/.zshrc
 
-echo -e "----
-/nInstalling tmux"
-brew install tmux
+#Fixing permissions of zsh-completions directory
+compaudit | xargs chmod g-w
+
+#echo -e "----
+#Installing tmux"
+#brew install tmux
 
 echo -e "----
-/nInstalling emacs and spacemacs"
+Installing emacs and spacemacs"
 brew install emacs
 
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
@@ -64,10 +67,10 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 cp ~/dotfiles/Customization-Scripts/tmux.conf.chromeOS ~/.tmux.conf
 
 echo -e "----
-/nAdding the Gotham theme....because I AM THE NIGHT!
+Adding the Gotham theme....because I AM THE NIGHT!
 
 open ~/dotfiles/Customization-Scripts/Gotham.terminal
 defaults write com.apple.terminal "Default Window Settings" "Gotham.terminal"
 
 echo -e "----
-/nTime to kill the terminal and open again... or reboot or something."
+Time to kill the terminal and open again... or reboot or something."
