@@ -54,17 +54,11 @@ cp ~/dotfiles/Customization-Scripts/zshrc.macOS ~/.zshrc
 #Fixing permissions of zsh-completions directory
 compaudit | xargs chmod g-w
 
-#echo -e "----
-#Installing tmux"
-#brew install tmux
-
 echo -e "----
 Installing emacs and spacemacs"
 brew install emacs
 
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-
-cp ~/dotfiles/Customization-Scripts/tmux.conf.chromeOS ~/.tmux.conf
 
 echo -e "----
 Adding the Gotham theme....because I AM THE NIGHT!

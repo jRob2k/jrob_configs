@@ -1,0 +1,54 @@
+#!/bin/bash
+
+#Introduction
+echo -e "Sup, Jay!
+\n---
+\n This script will install and configure the following....
+\n---
+\n\tZSH
+\n\t\t- New Shell because that's the future, apparently.
+\n\tOh-My-ZSH
+\n\t\t- Package manager for ZSH
+\n\temacs
+\n\t\t- A super awesome terminal text editor
+\n\tSpaceMacs
+\n\t\t- An extension for emacs to add VIM mode and IDE features
+\n\temacs aliases
+\n\t\t- Creates spacemaces alias and adds 'nw' to emacs alias."
+
+#TODO - Get the script to stop here and add a confirmation prompt
+#TODO - At some point, make it modular so i can add/drop stuff as needed
+#TODO - Add some kind of reporting at the end so that i can see everything installed properly
+
+#Let's get to work installing stuff
+echo -e "----
+\nInstalling GIT, ZSH and zsh-syntax-highlighting and switching to it as default"
+
+#Installing ZSH
+apt-get update
+apt-get install zsh -y
+
+#Install oh-my-zsh as unattended so it doesn't try to change the shell or switch to ZSH at the end.
+cd ~/
+git clone https://github.com/adi1090x/termux-omz.git
+cd termux-omz
+chmod +x install
+./install
+cd ~/
+
+###install zsh-syntax-highlighting
+apt-get install zsh-syntax-highlighting -y
+
+#copy the appropriate zshrc file to home directory for use
+cp ~/dotfiles/Customization-Scripts/zshrc.termux ~/.zshrc
+
+echo -e "----
+/nInstalling emacs and spacemacs"
+apt-get install emacs -y
+
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
+echo -e "----
+/nChanging default shell to ZSH. Next time you launch you'll be in TMUX with ZSH."
+
+chsh 
