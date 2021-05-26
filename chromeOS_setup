@@ -62,13 +62,13 @@ cd ~/
 #copy the appropriate zshrc file to home directory for use
 cp ~/dotfiles/Customization-Scripts/zshrc.chromeOS ~/.zshrc
 
-echo -e "----
-/nInstalling tmux"
-sudo apt-get install tmux -y
+# echo -e "----
+# /nInstalling tmux"
+# sudo apt-get install tmux -y
 ###Commenting out xsel. not sure i need it and it may be interferring with copy paste. Test further
 # sudo apt-get install xsel
 
-cp ~/dotfiles/Customization-Scripts/tmux.conf.chromeOS ~/.tmux.conf
+# cp ~/dotfiles/Customization-Scripts/tmux.conf.chromeOS ~/.tmux.conf
 
 echo -e "----
 /nInstalling emacs and spacemacs"
