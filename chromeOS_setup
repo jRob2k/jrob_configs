@@ -48,27 +48,11 @@ cd fonts
 ./install.sh
 cd ~/
 
-###Commenting out spaceship prompt for now. agnoster theme FTW!!!
-# echo -e "----
-# /nInstalling spaceship prompt"
-
-#### Install spaceship prompt
-#Clone the repo
-# git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
-
-#Symlink spaceship.zsh-theme to the oh-my-zsh custom themes director
-# ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-
 #copy the appropriate zshrc file to home directory for use
 cp ~/dotfiles/Customization-Scripts/zshrc.chromeOS ~/.zshrc
 
-# echo -e "----
-# /nInstalling tmux"
-# sudo apt-get install tmux -y
-###Commenting out xsel. not sure i need it and it may be interferring with copy paste. Test further
-# sudo apt-get install xsel
-
-# cp ~/dotfiles/Customization-Scripts/tmux.conf.chromeOS ~/.tmux.conf
+#Installing pipenv
+sudo apt-get install pipenv -y
 
 echo -e "----
 /nInstalling emacs and spacemacs"
