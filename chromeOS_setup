@@ -48,11 +48,19 @@ cd fonts
 ./install.sh
 cd ~/
 
+
+echo -e "----/nCopying chromeOS zshrc file"
+
+
 #copy the appropriate zshrc file to home directory for use
 cp ~/dotfiles/Customization-Scripts/zshrc.chromeOS ~/.zshrc
 
-#Installing pipenv
+echo -e "----/nInstalling pipenv and gnome-keyring"
+#Installing pipenv for python dev
 sudo apt-get install pipenv -y
+
+#Installing gnome-keyring so i can stay signed into stuff
+sudo apt-get install gnome-keyring
 
 echo -e "----
 /nInstalling emacs and spacemacs"
