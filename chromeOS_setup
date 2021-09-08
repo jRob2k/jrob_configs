@@ -69,6 +69,11 @@ sudo apt-get install emacs -y
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 echo -e "----
-/nChanging default shell to ZSH. Next time you launch you'll be in TMUX with ZSH."
+/nInstalling Snapd and dependancies."
+
+sudo apt install -y libsquashfuse0 squashfuse fuse snapd
+
+echo -e "----
+/nChanging default shell to ZSH."
 
 sudo chsh -s /bin/zsh $USER
