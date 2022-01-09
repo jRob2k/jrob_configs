@@ -35,9 +35,8 @@ sudo apt-get install zsh -y
 #Install oh-my-zsh as unattended so it doesn't try to change the shell or switch to ZSH at the end.
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-###install zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting" --depth 1
-echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"
+###install zsh-syntax-highlighting using oh-my-zsh plugins
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo -e "----
 /nInstalling Powerline Fonts"
