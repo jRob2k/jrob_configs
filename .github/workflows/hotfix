@@ -4,11 +4,10 @@ on:
   pull_request:
     types:
       - closed
-      - labeled
 
 jobs:
   hot_fix_change:
-    if: ${{ github.event.label.name == 'hotfix' && github.event.pull_request.merged == 'true' }}
+    if: ${{ github.event.pull_request.merged == 'true' }}
     runs-on:
       - linux
     strategy:
