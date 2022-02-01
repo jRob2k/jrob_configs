@@ -2,8 +2,7 @@
 name: Hotfix
 on:
   pull_request:
-    types:
-      - closed
+    types: [closed]
 
 jobs:
   hot_fix_change:
