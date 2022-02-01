@@ -1,0 +1,45 @@
+# when a PR is merged with 'Hotfix' tag 2 PRs will be generated to alpha/master
+name: Hotfix
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  hot_fix_change:
+    if: ${{ github.event.pull_request.merged == 'true' }}
+    runs-on:
+      - linux
+    strategy:
+      matrix:
+        pair:
+          - from: dev
+            to: main
+          - from: dev
+            to: alpha
+    steps:
+      # make sure the repo is clean
+      - uses: AutoModality/action-clean@v1
+
+      # checkout the to and from branches based on the above matrix
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ matrix.pair.to }}
+          path: ${{ matrix.pair.to }}
+
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ matrix.pair.from }}
+          path: ${{ matrix.pair.from }}
+
+      # open a PR, this will not fail if there are no changes to be made.
+      - uses: peter-evans/create-pull-request@v3.10.0
+        with:
+          author: jRob_Bot <jrob_bot@gmail.com>
+          base: ${{ matrix.pair.to }}
+          branch: ${{ github.workflow }}_${{ matrix.pair.from }}-to-${{ matrix.pair.to }}--${{ github.run_id }}
+          commit-message: Hotfix promotion of ${{ github.event.pull_request.title }} from ${{ matrix.pair.from }} to ${{ matrix.pair.to }}
+          committer: jRob_Bot <jrob_bot@gmail.com>
+          delete-branch: true
+          path: ${{ matrix.pair.to }}
+          title: Hotfix Promo ${{ matrix.pair.from }} to ${{ matrix.pair.to }}
