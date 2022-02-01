@@ -36,11 +36,11 @@ jobs:
       # open a PR, this will not fail if there are no changes to be made.
       - uses: peter-evans/create-pull-request@v3.10.0
         with:
-          author: CPE Actions <jrob2k@gmail.com>
+          author: jRob_Bot <jrob_bot@gmail.com>
           base: ${{ matrix.pair.to }}
           branch: ${{ github.workflow }}_${{ matrix.pair.from }}-to-${{ matrix.pair.to }}--${{ github.run_id }}
           commit-message: Hotfix promotion of ${{ github.event.pull_request.title }} from ${{ matrix.pair.from }} to ${{ matrix.pair.to }}
-          committer: CPE Actions <jrob2k@gmail.com>
+          committer: jRob_Bot <jrob_bot@gmail.com>
           delete-branch: true
           path: ${{ matrix.pair.to }}
           title: Hotfix Promo ${{ matrix.pair.from }} to ${{ matrix.pair.to }}
