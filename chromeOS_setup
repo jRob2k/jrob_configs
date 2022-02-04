@@ -5,12 +5,8 @@ echo -e "Sup, Jay!
 \n---
 \n This script will install and configure the following....
 \n---
-\n\tZSH
-\n\t\t- New Shell because that's the future, apparently.
-\n\tOh-My-ZSH
-\n\t\t- Package manager for ZSH
-\n\ttmux
-\n\t\t- An awesome terminal window manager
+\n\tFish Shell
+\n\t\t- Fish shell is quite cool
 \n\tPowerline fonts
 \n\t\t- Because apparently this is super important for a good looking functional terminal
 \n\temacs
@@ -26,17 +22,19 @@ echo -e "Sup, Jay!
 
 #Let's get to work installing stuff
 echo -e "----
-\nInstalling GIT, ZSH and zsh-syntax-highlighting and switching to it as default"
+/nInstalling Fish Shell and oh-my-fish"
 
-#Installing ZSH
-sudo apt-get update
-sudo apt-get install zsh -y
+#Installs for Debian 11 since that's what's in crostini right now
+echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_11/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list
+curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_11/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
+sudo apt update
+sudo apt install fish
 
-#Install oh-my-zsh as unattended so it doesn't try to change the shell or switch to ZSH at the end.
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+#Installs oh-my-fish with the install script from git
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 
-###install zsh-syntax-highlighting using oh-my-zsh plugins
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+omf install agnoster
+omf theme agnoster
 
 echo -e "----
 /nInstalling Powerline Fonts"
@@ -47,13 +45,6 @@ git clone https://github.com/powerline/fonts.git --depth=1
 cd fonts
 ./install.sh
 cd ~/
-
-
-echo -e "----/nCopying chromeOS zshrc file"
-
-
-#copy the appropriate zshrc file to home directory for use
-cp ~/dotfiles/Customization-Scripts/zshrc.chromeOS ~/.zshrc
 
 echo -e "----/nInstalling pipenv and gnome-keyring"
 #Installing pipenv for python dev
@@ -74,6 +65,6 @@ echo -e "----
 sudo apt install -y libsquashfuse0 squashfuse fuse snapd
 
 echo -e "----
-/nChanging default shell to ZSH."
+/nChanging default shell to Fish."
 
-sudo chsh -s /bin/zsh $USER
+sudo chsh -s /bin/fish $USER
